@@ -1,16 +1,20 @@
 package com.skilldistillery.data;
 
 import java.io.BufferedReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.context.WebApplicationContext;
+
 
 public class ConcertDaoListImpl implements ConcertDAO {
 	
@@ -20,6 +24,9 @@ public class ConcertDaoListImpl implements ConcertDAO {
 	
 	@Autowired 
 	private WebApplicationContext wac;
+
+	@Autowired
+	private ServletContext context;
 	
 	@PostConstruct
 	public void init() {
@@ -61,6 +68,23 @@ public class ConcertDaoListImpl implements ConcertDAO {
 	public List<Concert> getAllConcerts() {
 		return concerts;
 	}
-
+	
+	 @Override
+	    public void persistConcertList(List<Concert> userConcertList) {
+	        String concertFile = "WEB-INF/userconcertlist.csv";
+	        String filePath = context.getRealPath(concertFile);
+	        System.out.println("DAO: " + filePath);
+	        try {
+	            PrintWriter out = new PrintWriter(new FileWriter(filePath));
+	            for (Concert c : userConcertList) {
+	                out.println(c.getPerformer() + ", " + c.getVenue() + ", " + c.getDate()
+	                );
+	                
+	            }
+	            out.close();
+	        } catch (IOException ioe) {
+	            ioe.printStackTrace();
+	        }
+	    }
 
 }

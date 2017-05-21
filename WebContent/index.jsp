@@ -1,11 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="master.css">
+<link href="https://fonts.googleapis.com/css?family=Karla|PT+Sans" rel="stylesheet">
 <title>Your Concert Events</title>
 </head>
+
+<nav>
+<ul>
+<li><a href="index.jsp">Home</a></li>
+<li><a href="yourConcertsPage.jsp">Your shows</a></li>
+<li><form action="GetConcertData.do" method="get">
+		Look up artist: <input type="text" name="performer" /> <input type="submit" name="LookUp"
+			value="Search" />
+	</form></li>
+</ul>
+</nav>
+
+
 <h2>Keep track of upcoming concerts</h2>
 <body>
 
@@ -28,5 +45,6 @@
 	<form action="GetConcertData.do" method="get">
 		<input type="submit" name="GetConcertList" value="showAll" />
 	</form>
+
 </body>
 </html>
