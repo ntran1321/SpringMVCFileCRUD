@@ -41,6 +41,27 @@ nav li a {
 }
 	
 
-nav a:hover {
+nav ul li:hover {
     background-color: rgb(123, 209, 193);
+}
+
+table {
+	border-collapse: collapse;
+	width: 100%;
+}
+table, th, td {
+    border: 1px solid black;
+}
+
+table th {
+	height:50px;
+	background-color: rgb(177, 226, 239);
+	font-size: 20px;
+	font-weight: bold;
+}
+
+table img {
+	display: block;
+    margin: auto;
+    width: 40%;
 }

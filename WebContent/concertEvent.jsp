@@ -16,6 +16,7 @@
 <ul>
 <li><a href="index.jsp">Home</a></li>
 <li><a href="yourConcertsPage.jsp">Your shows</a></li>
+<li><a href="ConcertsPage.jsp">All shows</a></li>
 <li><form action="GetConcertData.do" method="get">
 		Look up artist: <input type="text" name="performer" /> <input type="submit" name="LookUp"
 			value="Search" />
@@ -23,12 +24,10 @@
 </ul>
 </nav>
 
-
-<h1>Your saved concerts</h1>
 <body>
 
-	${concert.performer}
-	<br> will be playing at: ${concert.venue}
+	<h3>${concert.performer}</h3>
+	Playing at: ${concert.venue}
 	<br> on: ${concert.date}
 	<br>
 	<br>
@@ -39,6 +38,7 @@
 	<form action="GetConcertData.do" method="get">
 		<input type="submit" name="addThisEvent" value="Add Event" />
 	</form>
+	<br>
 	<br>
 
 	<h3>Get all of your shows:</h3>

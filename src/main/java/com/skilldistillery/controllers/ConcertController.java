@@ -3,11 +3,11 @@ package com.skilldistillery.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -43,6 +43,16 @@ public class ConcertController {
 		mv.addObject("userConcertList", userConcertList);
 		mv.setViewName("yourConcertsPage.jsp");
 		return mv;
+	}
+	
+	@RequestMapping(path = "getAllShows.do")
+	public String showAllConcerts(Model model) {
+		List<Concert> concerts = dao.getAllConcerts();
+		for (Concert concert : concerts) {
+			System.out.println(concert);
+		}
+		model.addAttribute("concerts", concerts);
+		return "ConcertsPage.jsp";
 	}
 
 	@RequestMapping(path = "GetConcertData.do", params = "LookUp")

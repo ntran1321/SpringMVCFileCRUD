@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="master.css">
 <link href="https://fonts.googleapis.com/css?family=Karla|PT+Sans"
 	rel="stylesheet">
-<title>Your Concert Events</title>
+<title>Upcoming Concert Events</title>
 <link rel="stylesheet" href="master.css">
 </head>
 
@@ -27,12 +27,8 @@
 </ul>
 </nav>
 
-<h1>Your saved concerts</h1>
-<body>
-	<c:if test="${sessionScope.concertList} != null">
-You do not have any saved concerts!
-</c:if>
 
+<body>
 	<table>
 		<tr>
 			<th>Artist</th>
@@ -41,34 +37,23 @@ You do not have any saved concerts!
 			<th></th>
 		</tr>
 
-		<c:forEach var="c" items="${sessionScope.concertList}">
-			<tr>
-				<td>${c.performer}
-				</td>
-				<td>${c.venue}</td>
-				<td>${c.date}
-				</td>
-				<td><img src=${c.imageUrl } alt="band photo" /></td>
-			</tr>
+		<c:forEach var="c" items="${concerts}">
+		<tr>
+		<td>
+			${c.performer}
+		</td>
+		<td>
+			${c.venue}
+		</td>
+		<td>
+			${c.date}
+		</td>
+		<td>
+			<img src="${c.imageUrl}" alt="band photo"/>
+		</td>
+		</tr>
 		</c:forEach>
 	</table>
 
-	<h3>Remove a show</h3>
-	<form action="removeConcert.do" method="get">
-		<select name="performer">
-			<c:forEach var="c" items="${sessionScope.concertList}">
-				<option>${c.performer}</option>
-			</c:forEach>
-		</select> <input type="submit" value="submit" />
-	</form>
-	<br>
-
-	<h3>Save concerts to a file:</h3>
-	<form action="saveConcerts.do" method="get">
-		<input type="submit" value="Save" />
-	</form>
-	<br>
-
-	<h3>Return to index</h3>
-	<a href="index.jsp">Return to index</a>
 </body>
+</html>
