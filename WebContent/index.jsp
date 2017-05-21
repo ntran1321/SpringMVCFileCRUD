@@ -11,22 +11,22 @@
 
 	<form action="GetConcertData.do" method="get">
 		<h3>Look up an artist:</h3>
-		<br> <input type="text" name="performer" /> <input type="submit"
+		<br> <input type="text" name="performer" /> <input type="submit" name="LookUp"
 			value="Look up" />
 	</form>
 
 
 	<h3>Add your own concert:</h3>
-
 	<form action="GetConcertData.do" method="get">
-		Artist: <input type="text" name="performer" /><br> Venue: <input
-			type="text" name="venue" /><br> Date: <input type="text"
-			name="date" /><br> <input type="submit" value="Add Event" />
+		Artist: <input type="text" name="performer" /><br> 
+		Venue: <input type="text" name="venue" /><br> 
+		Date: <input type="text" name="date" /><br> 
+			<input type="submit" name="AddYourEvent" value="Add Event" />
 	</form>
 
 	<h3>Get all of your shows:</h3>
 	<form action="GetConcertData.do" method="get">
-		<input type="submit" value="showAll" />
+		<input type="submit" name="GetConcertList" value="showAll" />
 	</form>
 </body>
 </html>
